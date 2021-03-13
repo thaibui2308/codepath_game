@@ -4,7 +4,7 @@ const cluePauseTime = 350; //Separation between each clue
 const nextClueWaitTime = 1000; //Specify how long to wait before next clue playing
  
 
-var patter = [2,4,2,1,3,1,1,4];
+var pattern = [2,4,2,1,3,1,1,4];
 var progress = 0;
 var isPlayingGame = false;
 var tonePlaying = false;
@@ -12,6 +12,7 @@ var volume = 0.5;
 
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
+var buttonList = document.getElementsByClassName("btn");
 
 //when the Start and Stop button clicked
 const startGame = () => {
@@ -89,6 +90,18 @@ const playinSingleClue = (index) => {
 const playClueSequence = () => {
   let delay = nextClueWaitTime;
   for (var i = 0; i < progress.length(); i++) {
-     s 
+     setTimeout(playinSingleClue, delay,pattern[i]); 
+     delay += clueHoldTime;
+     delay += cluePauseTime;
   }
+}
+
+const guess = btn => {
+  console.log("User had pressed button: "+btn);
+  if (!isPlayingGame)
+    return;
+}
+
+for (var i = 0; i < 4; i++){
+  
 }
