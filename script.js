@@ -87,6 +87,15 @@ const playinSingleClue = (index) => {
     setTimeout(clearButton, clueHoldTime, index);
   }
 }
+//Check user response
+const loseGame = () => {
+  stopGame();
+  alert("Oops! You lost :(");
+}
+const winGame = () => {
+  stopGame();
+  alert("Yay! You won :)");
+}
 
 const playClueSequence = () => {
   guessCounter = 0;
@@ -103,26 +112,30 @@ const guess = btn => {
   
   if (!isPlayingGame)
     return;
+  
   //Game logic
-  if (pattern[guessCounter] != btn)
-    loseGame();
-  else {
-    if (guessCounter < progress)
+  if(pattern[guessCounter] == btn){
+    //Guess was correct!
+    if(guessCounter == progress){
+      if(progress == pattern.length - 1){
+        //GAME OVER: WIN!
+        winGame();
+      }else{
+        //Pattern correct. Add next segment
+        progress++;
+        playClueSequence();
+      }
+    }else{
+      //so far so good... check the next guess
       guessCounter++;
+    }
+  }else{
+    //Guess was incorrect
+    //GAME OVER: LOSE!
+    loseGame();
   }
   
 }
 
-//Check user response
-const loseGame = () => {
-  stopGame();
-  alert("Oops! You lost :(");
-}
-const winGame = () => {
-  stopGame();
-  alert("Yay! You won :)");
-}
-//
-for (var i = 0; i < 4; i++){
-   buttonList[i].addEventListener("click", guess(i+1));
-}
+
+
