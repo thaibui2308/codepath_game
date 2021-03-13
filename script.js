@@ -42,7 +42,7 @@ function playTone(btn,len){
 }
 function startTone(btn){
   if(!tonePlaying){
-    o.frequency.value = freqMap[1.25*btn]
+    o.frequency.value = freqMap[btn]
     g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
     tonePlaying = true
   }
@@ -63,8 +63,11 @@ o.connect(g)
 o.start(0)
 
 const addSound = (item, index) => {
-  item.addEventListerner("mousedown",)
+  item.addEventListerner("mousedown",startTone(index));
+  item.addEventListerner("mouseup",stopTone(index));
+  
 }
 
-const interactiveBtn = document.getElementsByClassName("playinButton");
-interactiveBtn.forEach()
+const interactiveBtn = document.getElementsByClassName("playinBtn");
+interactiveBtn.forEach(addSound);
+
