@@ -9,6 +9,7 @@ var progress = 0;
 var isPlayingGame = false;
 var tonePlaying = false;
 var volume = 0.5; 
+var guessCounter = 0;
 
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
@@ -88,6 +89,7 @@ const playinSingleClue = (index) => {
 }
 
 const playClueSequence = () => {
+  guessCounter = 0;
   let delay = nextClueWaitTime;
   for (var i = 0; i < progress.length(); i++) {
      setTimeout(playinSingleClue, delay,pattern[i]); 
@@ -98,10 +100,29 @@ const playClueSequence = () => {
 
 const guess = btn => {
   console.log("User had pressed button: "+btn);
+  
   if (!isPlayingGame)
     return;
+  //Game logic
+  if (pattern[guessCounter] != btn)
+    loseGame();
+  else {
+    if (guessCounter < progress)
+      guessCounter++;
+  }
+  
 }
 
+//Check user response
+const loseGame = () => {
+  stopGame();
+  alert("Oops! You lost :(");
+}
+const winGame = () => {
+  stopGame();
+  alert("Yay! You won :)");
+}
+//
 for (var i = 0; i < 4; i++){
    buttonList[i].addEventListener("click", guess(i+1));
 }
