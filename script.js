@@ -8,6 +8,7 @@ var volume = 0.5;
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
 
+//when the Start and Stop button clicked
 const startGame = () => {
   isPlayingGame = true;
   progress = 0;
@@ -62,12 +63,7 @@ g.gain.setValueAtTime(0,context.currentTime)
 o.connect(g)
 o.start(0)
 
-const addSound = (item, index) => {
-  item.addEventListerner("mousedown",startTone(index));
-  item.addEventListerner("mouseup",stopTone(index));
-  
-}
+//Clearing a button
+f
 
-const interactiveBtn = document.getElementsByClassName("playinBtn");
-interactiveBtn.forEach(addSound);
 
