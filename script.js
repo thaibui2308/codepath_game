@@ -1,5 +1,8 @@
 //Instance Variables
-var clueHoldTime = 1000;
+const clueHoldTime = 1000;
+const cluePauseTime = 350; //Separation between each clue
+const nextClueWaitTime = 1000; //Specify how long to wait before next clue playing
+ 
 
 var patter = [2,4,2,1,3,1,1,4];
 var progress = 0;
@@ -80,5 +83,12 @@ const playinSingleClue = (index) => {
     lightButton(index);
     playTone(index, clueHoldTime);
     setTimeout(clearButton, clueHoldTime, index);
+  }
+}
+
+const playClueSequence = () => {
+  let delay = nextClueWaitTime;
+  for (var i = 0; i < progress.length(); i++) {
+     s 
   }
 }
