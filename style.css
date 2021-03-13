@@ -3,9 +3,52 @@
 body {
   font-family: helvetica, arial, sans-serif;
   margin: 2em;
+  background-color: slategrey;
+  color: white;
 }
 
 h1 {
   font-style: italic;
-  color: #373fff;
+  color: #ebaca2;
+  font-family: verdana, arial, sans-serif; 
+}
+
+button {
+  border-style: ridge;
+  padding: 15px;
+  border-radius: 50%;
+}
+div#gameButtonArea {
+  padding-top: 50px;
+}
+#gameButtonArea > button {
+  display:inline;
+  width:200px;
+  height:200px;
+  margin: 2px;
+}
+.hidden{display:none;}
+#button1{
+  background-color: lightgreen;
+}
+#button2{
+  background-color: lightblue;
+}
+#button3{
+  background-color: pink;
+}
+#button4{
+  background-color: lightyellow;
+}
+#button1:active{
+  background-color: lightgreen;
+}
+#button2{
+  background-color: lightblue;
+}
+#button3{
+  background-color: pink;
+}
+#button4{
+  background-color: lightyellow;
 }
