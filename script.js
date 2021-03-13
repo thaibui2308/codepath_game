@@ -103,5 +103,5 @@ const guess = btn => {
 }
 
 for (var i = 0; i < 4; i++){
-  
+   buttonList[i].addEventListener("click", guess(i+1));
 }
