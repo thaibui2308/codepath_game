@@ -21,6 +21,7 @@ const startGame = () => {
   progress = 0;
   document.getElementById("startBtn").classList.add("hidden");
   document.getElementById("stopBtn").classList.remove("hidden");
+  playClueSequence();
 }
 
 const stopGame = () => {
@@ -97,45 +98,38 @@ const winGame = () => {
   alert("Yay! You won :)");
 }
 
-const playClueSequence = () => {
-  guessCounter = 0;
-  let delay = nextClueWaitTime;
-  for (var i = 0; i < progress.length(); i++) {
-     setTimeout(playinSingleClue, delay,pattern[i]); 
-     delay += clueHoldTime;
-     delay += cluePauseTime;
+function playClueSequence(){
+  let delay = nextClueWaitTime; 
+  for(let i=0;i<=progress;i++){ 
+    console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
+    setTimeout(playinSingleClue,delay,pattern[i]) 
+    delay += clueHoldTime 
+    delay += cluePauseTime;
   }
 }
 
-const guess = btn => {
-  console.log("User had pressed button: "+btn);
-  
-  if (!isPlayingGame)
+var guess = (btn) => {
+  console.log("user guessed: " + btn);
+
+  if(!isPlayingGame){
     return;
-  
-  //Game logic
-  if(pattern[guessCounter] == btn){
-    //Guess was correct!
-    if(guessCounter == progress){
-      if(progress == pattern.length - 1){
-        //GAME OVER: WIN!
-        winGame();
-      }else{
-        //Pattern correct. Add next segment
-        progress++;
-        playClueSequence();
-      }
-    }else{
-      //so far so good... check the next guess
-      guessCounter++;
-    }
-  }else{
-    //Guess was incorrect
-    //GAME OVER: LOSE!
-    loseGame();
   }
   
-}
+  if (pattern[guessCounter] != btn)
+    loseGame();
+  else {
+    if (guessCounter != progress) {
+      progress++;
+      playClueSequence;
+    }
+    else {
+      if (progress != pattern.length-1){
+        
+      }
+    }
+  }
+}    
+
 
 
 
