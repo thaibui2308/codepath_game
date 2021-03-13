@@ -41,14 +41,17 @@ div#gameButtonArea {
   background-color: lightyellow;
 }
 #button1:active{
-  background-color: lightgreen;
+  background-color: green;
 }
-#button2{
-  background-color: lightblue;
+#button2:active{
+  background-color: blue;
 }
-#button3{
-  background-color: pink;
+#button3:active{
+  background-color: red;
 }
-#button4{
-  background-color: lightyellow;
+#button4:active{
+  background-color: yellow;
+}
+#startBtn:active{
+  border-radius: 45%;
 }
