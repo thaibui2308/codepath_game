@@ -1,4 +1,6 @@
 //Instance Variables
+var clueHoldTime = 1000;
+
 var patter = [2,4,2,1,3,1,1,4];
 var progress = 0;
 var isPlayingGame = false;
@@ -64,6 +66,19 @@ o.connect(g)
 o.start(0)
 
 //Clearing a button
-f
+const lightButton = index => {
+  document.getElementById("button"+index).classList.add("lit");
+}
 
+const clearButton = index => {
+  document.getElementById("button"+index).classList.remove("lit");
+}
 
+//Real part of the game
+const playinSingleClue = (index) => {
+  if (isPlayingGame) {
+    lightButton(index);
+    playTone(index, clueHoldTime);
+    setTimeout(clearButton, clueHoldTime, index);
+  }
+}
