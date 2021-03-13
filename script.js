@@ -4,7 +4,7 @@ const cluePauseTime = 350; //Separation between each clue
 const nextClueWaitTime = 1000; //Specify how long to wait before next clue playing
  
 
-var pattern = [2,4,2,1,3,1,1,4];
+var pattern = [2,4];
 var progress = 0;
 var isPlayingGame = false;
 var tonePlaying = false;
@@ -108,25 +108,26 @@ function playClueSequence(){
   }
 }
 
-var guess = (btn) => {
+function guess(btn){
   console.log("user guessed: " + btn);
 
   if(!isPlayingGame){
     return;
   }
-  
-  if (pattern[guessCounter] != btn)
-    loseGame();
-  else {
-    if (guessCounter != progress) {
-      progress++;
-      playClueSequence;
-    }
-    else {
-      if (progress != pattern.length-1){
-        
+
+  if(pattern[guessCounter] == btn){
+    if(guessCounter == progress){
+      if(progress == pattern.length - 1){
+        winGame();
+      }else{
+        progress++;
+        playClueSequence();
       }
+    }else{
+      guessCounter++;
     }
+  }else{
+    loseGame();
   }
 }    
 
