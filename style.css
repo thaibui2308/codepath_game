@@ -22,6 +22,7 @@ div#gameButtonArea {
   padding-top: 50px;
 }
 #gameButtonArea > button {
+  justify-content: space-between;
   display:inline;
   width:200px;
   height:200px;
