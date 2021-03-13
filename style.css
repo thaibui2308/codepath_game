@@ -40,6 +40,9 @@ div#gameButtonArea {
 #button4{
   background-color: lightyellow;
 }
+#button5 {
+  background-color: grey;
+}
 #button1:active, #button1.lit{
   background-color: green;
 }
@@ -51,6 +54,9 @@ div#gameButtonArea {
 }
 #button4:active, #button4.lit{
   background-color: yellow;
+}
+#button5:active, #button5.lit{
+  background-color: black;
 }
 #startBtn:active{
   border-radius: 45%;

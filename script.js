@@ -1,10 +1,10 @@
 //Instance Variables
 const clueHoldTime = 1000;
-const cluePauseTime = 350; //Separation between each clue
+const cluePauseTime = 333; //Separation between each clue
 const nextClueWaitTime = 1000; //Specify how long to wait before next clue playing
  
 
-var pattern = [2,4];
+var pattern = [2, 4, 5, 2, 5, 1, 3, 2];
 var progress = 0;
 var isPlayingGame = false;
 var tonePlaying = false;
@@ -39,7 +39,8 @@ const freqMap = {
   1: 261.6,
   2: 329.6,
   3: 392,
-  4: 466.2
+  4: 466.2,
+  5: 549
 }
 function playTone(btn,len){ 
   o.frequency.value = freqMap[btn]
@@ -99,6 +100,7 @@ const winGame = () => {
 }
 
 function playClueSequence(){
+  guessCounter = 0;
   let delay = nextClueWaitTime; 
   for(let i=0;i<=progress;i++){ 
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
