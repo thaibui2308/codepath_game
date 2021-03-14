@@ -62,3 +62,6 @@ div#gameButtonArea {
 #startBtn:active{
   border-radius: 45%;
 }
+h2 {
+  margin-left: 70%;
+}

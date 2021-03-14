@@ -116,13 +116,7 @@ function playClueSequence(){
   }
 }
 
-function guess(btn){
-  console.log("user guessed: " + btn);
-
-  if(!isPlayingGame){
-    return;
-  }
-
+function gameLogic(btn) {
   if(pattern[guessCounter] == btn){
     if(guessCounter == progress){
       if(progress == pattern.length - 1){
@@ -140,7 +134,18 @@ function guess(btn){
       loseGame();
     }
   }
+}
+
+function guess(btn){
+  console.log("user guessed: " + btn);
+
+  if(!isPlayingGame){
+    return;
+  }
+  gameLogic(btn);
 }    
+
+
 
 
 
