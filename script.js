@@ -2,7 +2,7 @@
 var clueHoldTime = 1000;
 const cluePauseTime = 333; //Separation between each clue
 const nextClueWaitTime = 1000; //Specify how long to wait before next clue playing
- 
+
 
 var pattern = [2, 4, 5, 2, 5, 1, 3, 2];
 var progress = 0;
@@ -10,14 +10,19 @@ var isPlayingGame = false;
 var tonePlaying = false;
 var volume = 0.5; 
 var guessCounter = 0;
+var chance;
+var mistake = 0;
 
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
 var buttonList = document.getElementsByClassName("btn");
 
+//Generate Random pattern 
+
 //when the Start and Stop button clicked
 const startGame = () => {
   isPlayingGame = true;
+  chance = 3;
   progress = 0;
   document.getElementById("startBtn").classList.add("hidden");
   document.getElementById("stopBtn").classList.remove("hidden");
@@ -130,7 +135,10 @@ function guess(btn){
       guessCounter++;
     }
   }else{
-    loseGame();
+    mistake++;
+    if (mistake == chance){
+      loseGame();
+    }
   }
 }    
 
