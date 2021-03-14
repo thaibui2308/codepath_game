@@ -105,8 +105,10 @@ const winGame = () => {
   alert("Yay! You won :)");
 }
 
+var isPlay = false; //Indicate if a sequence has finished playing or not
 function playClueSequence(){
   guessCounter = 0;
+  isPlay = false;
   let delay = nextClueWaitTime; 
   for(let i=0;i<=progress;i++){ 
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
@@ -115,6 +117,7 @@ function playClueSequence(){
     delay += clueHoldTime 
     delay += cluePauseTime;
   }
+  isPlay = true;
 }
 
 const gameLogic = btn => {
@@ -145,6 +148,7 @@ function guess(btn){
   }
   gameLogic(btn);
 }    
+
 
 
 

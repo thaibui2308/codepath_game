@@ -27,6 +27,7 @@ div#gameButtonArea {
   width:200px;
   height:200px;
   margin: 2px;
+  background: url(btnImage.png);
 }
 .hidden{display:none;}
 #button1{
