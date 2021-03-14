@@ -151,6 +151,7 @@ function guess(btn){
 function addImage(btn) {
   var targetedBtn = document.getElementById("button"+btn);
   targetedBtn.classList.remove("hidden");
+  targetedBtn.classList.add("image");
 }
 
 
