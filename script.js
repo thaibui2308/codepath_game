@@ -33,6 +33,7 @@ const stopGame = () => {
   isPlayingGame = false;
   document.getElementById("stopBtn").classList.add("hidden");
   document.getElementById("startBtn").classList.remove("hidden");
+  chance = 0;
 }
 
 
@@ -116,7 +117,7 @@ function playClueSequence(){
   }
 }
 
-function gameLogic(btn) {
+const gameLogic = btn => {
   if(pattern[guessCounter] == btn){
     if(guessCounter == progress){
       if(progress == pattern.length - 1){
