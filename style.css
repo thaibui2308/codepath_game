@@ -48,9 +48,6 @@ div#gameButtonArea {
 }
 #button1:active, #button1.lit{
   background-color: green;
-  img {
-    border-radius: 50%;
-  }
 }
 #button2:active, #button2.lit{
   background-color: blue;
@@ -70,6 +67,6 @@ div#gameButtonArea {
 h2 {
   margin-left: 70%;
 }
-img {
-  display: none;
+.image {
+  border-radius: 50%;
 }

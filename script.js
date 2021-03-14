@@ -142,14 +142,16 @@ const gameLogic = btn => {
 
 function guess(btn){
   console.log("user guessed: " + btn);
-
   if(!isPlayingGame){
     return;
   }
   gameLogic(btn);
 }    
 
-
+function addImage(btn) {
+  var targetedBtn = document.getElementById("button"+btn);
+  targetedBtn.classList.remove("hidden");
+}
 
 
 
