@@ -4,9 +4,11 @@ const cluePauseTime = 333; //Separation between each clue
 const nextClueWaitTime = 1000; //Specify how long to wait before next clue playing
 
 
-const pattern = [];
-for (let i = 0; i <5; i++)
-  pattern.push(Math.floor(Math.random()*40)+1);
+var pattern = [];
+for (let i = 0; i <8; i++)
+  pattern.push(Math.floor(Math.random()*5)+1);
+for (let i=0;i<8;i++)
+  console.log(pattern[i])
 var progress = 0;
 var isPlayingGame = false;
 var tonePlaying = false;
@@ -28,6 +30,7 @@ const startGame = () => {
   progress = 0;
   document.getElementById("startBtn").classList.add("hidden");
   document.getElementById("stopBtn").classList.remove("hidden");
+  document.getElementById("chances_left").classList.remove("hidden");
   playClueSequence();
 }
 
@@ -124,6 +127,7 @@ function playClueSequence(){
   isPlay = true;
 }
 
+var chancesLeft = document.getElementById("chances_left").innerText;
 const gameLogic = btn => {
   if(pattern[guessCounter] == btn){
     if(guessCounter == progress){
@@ -138,6 +142,7 @@ const gameLogic = btn => {
     }
   }else{
     mistake++;
+    chancesLeft = 'Chances left: '+(chance-mistake);
     if (mistake == chance){
       loseGame();
     }
