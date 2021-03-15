@@ -60,12 +60,12 @@ function playTone(btn,len){
   g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
   tonePlaying = true
   setTimeout(function(){
-    stopTone()
+    stopTone(btn)
   },len)
 }
 function startTone(btn){
+  addImage(btn);
   if(!tonePlaying){
-    addImage(btn);
     o.frequency.value = freqMap[btn]
     g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
     tonePlaying = true
@@ -114,10 +114,10 @@ const winGame = () => {
   alert("Yay! You won :)");
 }
 
-var isPlay = false; //Indicate if a sequence has finished playing or not
+
 function playClueSequence(){
   guessCounter = 0;
-  isPlay = false;
+  
   let delay = nextClueWaitTime; 
   for(let i=0;i<=progress;i++){ 
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
@@ -126,11 +126,17 @@ function playClueSequence(){
     delay += clueHoldTime 
     delay += cluePauseTime;
   }
-  isPlay = true;
+  
 }
 
 var chanceTracker = document.getElementById("chances_left")
-const gameLogic = btn => {
+
+
+function guess(btn){
+  console.log("user guessed: " + btn);
+  if(!isPlayingGame){
+    return;
+  }
   if(pattern[guessCounter] == btn){
     if(guessCounter == progress){
       if(progress == pattern.length - 1){
@@ -154,14 +160,6 @@ const gameLogic = btn => {
       loseGame();
     }
   }
-}
-
-function guess(btn){
-  console.log("user guessed: " + btn);
-  if(!isPlayingGame){
-    return;
-  }
-  gameLogic(btn);
 }    
 
 function addImage(btn) {
