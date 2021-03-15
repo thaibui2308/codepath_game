@@ -15,7 +15,7 @@ var tonePlaying = false;
 var volume = 0.5; 
 var guessCounter = 0;
 var chance;
-var mistake = 0;
+var mistake ;
 
 var startBtn = document.getElementById("startBtn");
 var stopBtn = document.getElementById("stopBtn");
@@ -26,6 +26,7 @@ var buttonList = document.getElementsByClassName("btn");
 //when the Start and Stop button clicked
 const startGame = () => {
   isPlayingGame = true;
+  mistake = 0;
   chance = 3;
   progress = 0;
   document.getElementById("startBtn").classList.add("hidden");
@@ -36,6 +37,7 @@ const startGame = () => {
 
 const stopGame = () => {
   isPlayingGame = false;
+  document.getElementById("chances_left").classList.add("hidden");
   document.getElementById("stopBtn").classList.add("hidden");
   document.getElementById("startBtn").classList.remove("hidden");
   chance = 0;
@@ -127,7 +129,7 @@ function playClueSequence(){
   isPlay = true;
 }
 
-var chancesLeft = document.getElementById("chances_left").innerText;
+var chanceTracker = document.getElementById("chances_left")
 const gameLogic = btn => {
   if(pattern[guessCounter] == btn){
     if(guessCounter == progress){
@@ -142,8 +144,12 @@ const gameLogic = btn => {
     }
   }else{
     mistake++;
-    chancesLeft = 'Chances left: '+(chance-mistake);
+    chanceTracker.innerText = 'Chances left: '+(chance-mistake);
+    if (chance-mistake == 1)
+      chanceTracker.classList.add("alert");
     if (mistake == chance){
+      chanceTracker.innerText = 'Chances left: ' + 3;
+      chanceTracker.classList.remove("alert");
       loseGame();
     }
   }

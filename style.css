@@ -70,3 +70,6 @@ h2 {
 .image {
   border-radius: 50%;
 }
+.alert {
+  color: red;
+}
