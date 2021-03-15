@@ -143,6 +143,7 @@ const gameLogic = btn => {
       guessCounter++;
     }
   }else{
+    snd.play();
     mistake++;
     chanceTracker.innerText = 'Chances left: '+(chance-mistake);
     if (chance-mistake == 1)
@@ -174,6 +175,8 @@ function removeImage(btn) {
   targetedBtn.classList.add("hidden");
   targetedBtn.classList.remove("image");
 }
+
+ var snd = new Audio("https://cdn.glitch.com/34c1a5f6-48b0-4f14-b6e0-9d0564f1557f%2FBruh-Sound-Effect.mp3?v=1615794546236");
 
 
 
