@@ -35,8 +35,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - An indicator allows user to know how many chances he/she has left.
-- Instead of adding different sounds to each buttons when they are clicked, I only added sound to button that incorrectly clicked during  
-  in comparison to a clue sequence.
+- Instead of adding different sounds to each buttons when they are clicked, I only added sound to button that incorrectly clicked in comparison to a clue sequence.
 
 ## Video Walkthrough
 
