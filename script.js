@@ -4,7 +4,9 @@ const cluePauseTime = 333; //Separation between each clue
 const nextClueWaitTime = 1000; //Specify how long to wait before next clue playing
 
 
-var pattern = [2, 4, 5, 2, 5, 1, 3, 2];
+const pattern = [];
+for (let i = 0; i <5; i++)
+  pattern.push(Math.floor(Math.random()*40)+1);
 var progress = 0;
 var isPlayingGame = false;
 var tonePlaying = false;
@@ -58,12 +60,14 @@ function playTone(btn,len){
 }
 function startTone(btn){
   if(!tonePlaying){
+    addImage(btn);
     o.frequency.value = freqMap[btn]
     g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
     tonePlaying = true
   }
 }
-function stopTone(){
+function stopTone(btn){
+    removeImage(btn);
     g.gain.setTargetAtTime(0,context.currentTime + 0.05,0.025)
     tonePlaying = false
 }
@@ -149,11 +153,16 @@ function guess(btn){
 }    
 
 function addImage(btn) {
-  var targetedBtn = document.getElementById("button"+btn);
+  var targetedBtn = document.getElementById("imgButton"+btn);
   targetedBtn.classList.remove("hidden");
   targetedBtn.classList.add("image");
 }
 
+function removeImage(btn) {
+  var targetedBtn = document.getElementById("imgButton"+btn);
+  targetedBtn.classList.add("hidden");
+  targetedBtn.classList.remove("image");
+}
 
 
 
